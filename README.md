@@ -77,4 +77,14 @@ This project was built to showcase job-ready data analysis and business intellig
 
 **Adam Dorn**  
 Aspiring Data Analyst/Data Scientist | Background: Food Science → Insurance Analytics  
-📍 Wisconsin | Passion for business insights & data-driven decision-making  
+Passion for business insights & data-driven decision-making  
+
+---
+
+## Data Source
+
+This project uses the publicly available **[Home Insurance Dataset](https://www.kaggle.com/datasets/tejashvi14/home-insurance)** from Kaggle.  
+The dataset is released under a **[CC0: Public Domain License](https://creativecommons.org/publicdomain/zero/1.0/)**, which allows unrestricted use and sharing. Attribution is appreciated but not required.
+
+---
+
