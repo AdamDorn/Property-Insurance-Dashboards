@@ -14,8 +14,8 @@ This project showcases a full-cycle data analytics workflow using a real-world h
 
 ---
 
-SQL Data Cleaning and Transformation for Home Insurance Dataset
-Overview
+## SQL Data Cleaning and Transformation for Home Insurance Dataset Overview
+
 This SQL script performs data cleaning, date formatting, relabeling categorical variables, and feature engineering on the home_insurance dataset. The goal is to prepare a clean, user-friendly, and analysis-ready table named home_insurance_cleaned for use in Power BI or other BI tools.
 
 Step-by-Step Breakdown
