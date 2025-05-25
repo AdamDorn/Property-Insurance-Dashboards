@@ -14,6 +14,74 @@ This project showcases a full-cycle data analytics workflow using a real-world h
 
 ---
 
+SQL Data Cleaning and Transformation for Home Insurance Dataset
+Overview
+This SQL script performs data cleaning, date formatting, relabeling categorical variables, and feature engineering on the home_insurance dataset. The goal is to prepare a clean, user-friendly, and analysis-ready table named home_insurance_cleaned for use in Power BI or other BI tools.
+
+Step-by-Step Breakdown
+1. Initial Inspection
+SELECT * FROM home_insurance;
+
+View the raw data and identify columns needing cleaning or transformation.
+
+2. Date Columns Formatting
+Added new date columns (QUOTE_DATE_FORMAT, COVER_START_FORMAT, P1_DOB_FORMAT, MTA_DATE_FORMAT) as DATE type.
+
+Converted string dates (in dd/mm/yyyy format) to SQL DATE using STR_TO_DATE().
+
+Dropped the old string date columns.
+
+Renamed the new formatted date columns to original names for consistency.
+
+3. Create Cleaned Table
+Created a new table home_insurance_cleaned selecting relevant columns.
+
+Renamed columns with descriptive, user-friendly names for reporting.
+
+4. Drop Columns with High Missing Values
+Dropped Payment Frequency, Clerical Work, and Part-Time Employment Status due to many missing values.
+
+5. Categorical Variable Relabeling
+Updated short or coded values to meaningful labels for columns such as:
+
+Employment Status (E, R, S, etc. → 'Employed', 'Retired', 'Self-Employed', etc.)
+
+Marital Status (S, M, O, etc. → 'Single', 'Married', 'Other', etc.)
+
+Payment Method (PUREDD, NONDD, DD-OTHER → descriptive text)
+
+Binary flags (columns with 'Y'/'N') converted to 'Yes'/'No' for readability.
+
+Gender codes 'M'/'F' converted to 'Male'/'Female'.
+
+6. Feature Engineering: Customer Age
+Identified the latest quote date (2011-12-15) in the dataset to maintain historical relevance.
+
+Added a new column Customer Age.
+
+Calculated age based on Customer DOB and latest quote date using TIMESTAMPDIFF().
+
+Result
+The final table, home_insurance_cleaned, contains clean, well-labeled, and formatted data ready for analysis or dashboard reporting in Power BI.
+
+Notes
+Dates are stored as SQL DATE type for consistency.
+
+Binary columns are converted to descriptive Yes/No labels.
+
+Columns with excessive missing data were removed to improve data quality.
+
+Age calculation is anchored to the dataset's most recent quote date for accuracy in historical context.
+
+How to Use
+Run the entire script sequentially to transform raw data into the cleaned dataset.
+
+Export home_insurance_cleaned as CSV for Power BI or other tools.
+
+Use clean and descriptive columns for easy visualization and analysis.
+
+---
+
 ## Power BI Dashboard Overview
 
 The Power BI report contains **five pages**, each targeting key insurance business insights.
