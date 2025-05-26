@@ -312,4 +312,83 @@ WHERE `Customer DOB` IS NOT NULL;
 SELECT *
 FROM home_insurance_cleaned;
 
+-- Create copy of table to practice other SQL functions --
+CREATE TABLE property_insurance_cleaned AS
+SELECT * FROM home_insurance_cleaned;
 
+SELECT *
+FROM home_insurance_cleaned;
+
+-- Investigate unique values and counts for Ownership Type --
+SELECT `Ownership Type`, COUNT(*) AS `Count`
+FROM home_insurance_cleaned
+GROUP BY `Ownership Type`
+ORDER BY `Count` DESC;
+
+SELECT `Ownership Type`,
+       COUNT(*) AS Count,
+       ROUND(AVG(`Annual Premium`), 2) AS `Avg Premium`
+FROM home_insurance_cleaned
+GROUP BY `Ownership Type`
+ORDER BY Count DESC;
+
+ALTER TABLE home_insurance_cleaned
+ADD COLUMN Ownership_Label VARCHAR(50);
+
+-- Attempt to label Ownership Type using new column --
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE home_insurance_cleaned
+SET Ownership_Label = CASE `Ownership Type`
+    WHEN 8 THEN 'Owner-Occupied'
+    WHEN 3 THEN 'Mortgage'
+    WHEN 12 THEN 'Renter'
+    WHEN 18 THEN 'Renter'
+    WHEN 14 THEN 'Renter'
+    WHEN 11 THEN 'Renter'
+    WHEN 13 THEN 'Renter'
+    WHEN 17 THEN 'Renter'
+    WHEN 16 THEN 'Temporary Resident'
+    WHEN 15 THEN 'Other'
+    WHEN 6 THEN 'High-Risk or Commercial'
+    ELSE 'Unknown'
+END;
+
+SELECT `Ownership Type`, Ownership_Label, COUNT(*) AS Count
+FROM home_insurance_cleaned
+GROUP BY `Ownership Type`, Ownership_Label
+ORDER BY Count DESC;
+
+ALTER TABLE home_insurance_cleaned
+CHANGE COLUMN Ownership_Label `Ownership Label` VARCHAR(50);
+
+SELECT *
+FROM home_insurance_cleaned;
+
+SELECT `Property Type`, COUNT(*) AS Count
+FROM home_insurance_cleaned
+GROUP BY `Property Type`
+ORDER BY Count DESC;
+
+SELECT `Property Type`, COUNT(*) AS Count, AVG(`Annual Premium`) AS AvgPremium
+FROM home_insurance_cleaned
+GROUP BY `Property Type`
+ORDER BY AvgPremium DESC;
+
+ALTER TABLE home_insurance_cleaned ADD COLUMN `Property Type Label` VARCHAR(50);
+
+UPDATE home_insurance_cleaned
+SET `Property Type Label` = CASE
+    WHEN `Property Type` IN (2, 10, 1, 19) THEN 'Common Residential'
+    WHEN `Property Type` IN (22, 40, 37, 52, 51, 38, 53, 39, 18, 30, 3) THEN 'Special Residential'
+    WHEN `Property Type` IN (9, 7, 26, 32, 25, 48) THEN 'Small/Medium Units'
+    WHEN `Property Type` IN (4, 17, 45, 31, 44, 23, 16, 47, 29) THEN 'Other Residential'
+    WHEN `Property Type` IN (20, 21, 24, 27, 28, 8) THEN 'Rare / Other'
+    ELSE 'Unknown'
+END;
+
+SELECT *
+FROM home_insurance_cleaned;
+
+CREATE TABLE property_insurance_cleaned AS
+SELECT * FROM home_insurance_cleaned;
