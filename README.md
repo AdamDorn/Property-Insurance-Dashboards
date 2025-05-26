@@ -86,34 +86,40 @@ Use clean and descriptive columns for easy visualization and analysis.
 
 The Power BI report contains **five pages**, each targeting key insurance business insights.
 
-### Page 1: Overview
-- **Cards**: Total customers, average premium, number of policies
+### Page 1: Customer Profile
+- **Cards**: Average Customer Age
 - **Visuals**: 
-  - Age distribution histogram
-  - Pie chart of policy status
-  - Bar chart of customer age by gender
+  - Age distribution plot
+  - Pie chart of customer employment status
+  - Bar chart of marital status count
 
-### Page 2: Payment Behavior
+### Page 2: Policy Overview
+- **Cards**: Live Policy Count, Sum of Annual Premiums
 - **Visuals**:
-  - Payment method distribution
-  - Payment method vs. premium box plot
+  - Payment method distribution plot
+  - Coverage Start Date trend line plot
 
-### Page 3: Policy and Product Features
+### Page 3: Claims & Risk Area
 - **Visuals**:
-  - Sum insured (building and contents) vs. premium
-  - Cards showing average building and content coverage
+  - Claim in Last 3 Years pie chart
+  - Slicer Claim in Last 3 Years yes no
+  - Risk Area Buildings distribution plot
+  - Risk Area Contents distribution plot
 
-### Page 4: Security Features
+### Page 4: Property Profile & Security
 - **Visuals**:
-  - Approved locks and alarms vs. premium
-  - Max days unoccupied vs. premium
-  - Card for % of customers with approved security
+  - Safe Installed pie chart
+  - Year Built distribution plot
+  - Flood Risk Claim Last 3 Years distribution plot
+  - Property Type count bar chart
+
 
 ### Page 5: Business Impact (Python Analysis)
 - **Boxplots using Seaborn**:
-  - Ownership Type vs. Annual Premium
-  - Marital Status vs. Annual Premium
-  - Employment Status vs. Annual Premium
+  - Ownership Type vs. Annual Premium boxplot
+  - Property Type vs. Annual Premium boxplot
+  - Year Built vs. Annual Premium boxplot
+  - Flood Risk vs. Annual Premium boxplot
 ---
 
 ## Tools Used
